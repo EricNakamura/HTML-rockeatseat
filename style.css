@@ -3,6 +3,7 @@
 :root {
   --text-color: white;
   --background-img: url(./assets/bg-desktop.jpg);
+  --mobile-background-img: url(./assets/bg-mobile.jpg);
   --avatar-img: url(./assets/avatar.png);
   --button-background: rgba(255, 255, 255, 0.1);
   --button-background-hover: rgba(255, 255, 255, 0.05);
@@ -13,6 +14,7 @@
 .light {
   --text-color: black;
   --background-img: url(./assets/bg-desktop-light.jpg);
+  --mobile-background-img: url(./assets/bg-mobile-light.jpg);
   --avatar-img: url(./assets/avatar-light.png);
   --button-background: rgba(0, 0, 0, 0.1);
   --button-background-hover: transparent;
@@ -20,13 +22,13 @@
   --switch-bg: url(./assets/Sun.svg);
 }
 .light .switch .theme-mode {
-  left: initial;
-  right: 0;
+  animation: slide-in 0.4s forwards;
 }
 
 /* RESET */
 * {
   transition: color 0.5s;
+  transition: transform 0.5s;
   transition: background 1s;
   margin: 0;
   padding: 0;
@@ -42,7 +44,8 @@ body {
   background-image: var(--background-img);
   background-position: top center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: auto;
+  height: 100vh;
   margin: 5rem 0 5rem 0;
 }
 
@@ -71,10 +74,9 @@ ion-icon {
 
 /* STYLING */
 .container {
-  width: 30rem;
+  max-width: 20rem;
 
   margin: auto;
-  padding: 0 1rem 0 1rem;
 
   display: flex;
   align-items: stretch;
@@ -104,9 +106,16 @@ ion-icon {
   border: 1px var(--text-color) solid;
 }
 
+.theme-mode:hover {
+  outline-width: 8px;
+}
+
 .theme-mode {
+  transition: outline 0.2s;
+  outline: var(--button-background-hover-social) solid 0;
+
   position: absolute;
-  left: 0;
+  animation: slide-back 0.4s forwards;
   z-index: 1;
 
   width: 32px;
@@ -197,11 +206,31 @@ ion-icon {
   margin: auto;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 600px) {
   body {
-    background-image: var(--background-img);
+    height: 100vh;
+    background-image: var(--mobile-background-img);
     background-position: top center;
     background-repeat: no-repeat;
-    background-size: auto;
+    background-size: cover;
+    margin: 4rem 1rem;
+  }
+}
+
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left: 55%;
+  }
+}
+
+@keyframes slide-back {
+  from {
+    left: 55%;
+  }
+  to {
+    left: 0;
   }
 }
