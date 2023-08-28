@@ -131,14 +131,24 @@ ion-icon {
 
 .profile {
   flex-direction: column;
-  align-self: center;
+  align-items: center;
   gap: 1rem;
   font-weight: bold;
 }
 
 .avatar {
+  transition: outline 0.3s;
+
   width: 6rem;
   height: 6rem;
+
+  outline: var(--button-background-hover-social) solid 0;
+
+  border-radius: 50%;
+}
+
+.avatar:hover {
+  outline-width: 10px;
 }
 
 .links {
@@ -168,11 +178,12 @@ ion-icon {
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
 
-  transition: background 0.5s;
+  transition: background 0.5s, transform .3s;
 }
 
 .links a:hover {
   border-width: 2px;
+  transform: scale(1.05);
   background-color: var(--button-background-hover);
 }
 
@@ -184,7 +195,7 @@ ion-icon {
 
 .social-media ul {
   display: flex;
-  gap: 1rem;
+  gap: 2rem;
   padding: 0 1rem;
   justify-content: center;
   margin: auto;
@@ -193,18 +204,28 @@ ion-icon {
 .social-media a {
   display: flex;
   align-items: center;
-  padding: 1rem;
+  padding: .5rem;
   border-radius: 50%;
 
-  transition: background-color 0.2s;
+  transition: background-color 0.2s, transform .2s;
 }
 
 .social-media a:hover {
+  transform: scale(1.5);
   background-color: var(--button-background-hover-social);
 }
 
 .footer {
   margin: auto;
+}
+
+.footer span ion-icon {
+  transition: transform 0.5s, color 0.3s;
+}
+
+.footer span ion-icon:hover {
+  color: red;
+  transform: rotate(380deg) scale(1.5);
 }
 
 @media only screen and (max-width: 600px) {
