@@ -1,8 +1,5 @@
 # DevLinks
 
-Esse simples projeto desenvolvido durantes a aulas do Discovery para aprendizado das
-tecnologias usadas no mesmo
-
 ## 🚀Tecnoligias Usadas
 
 | Tecnologia | Aplicação |
